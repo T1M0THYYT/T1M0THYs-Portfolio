@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced JSON Obfuscator</title>
+  <style>
+    /* Background styling */
+    body {
+      font-family: Arial, sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgb(255, 0, 0), rgba(93, 1, 1, 0.471)),
+        url('https://via.placeholder.com/1920x1080') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Container styling */
+    .container {
+      padding: 30px;
+      width: 100%;
+      max-width: 600px;
+      background: rgba(0, 0, 0, 0.7);
+      /* Darken the container slightly */
+      border-radius: 15px;
+      box-shadow: 0px 4px 10px rgba(3, 1, 1, 0.5);
+      backdrop-filter: blur(5px);
+      /* Softens the box background */
+    }
+
+    /* Button styling */
+    .button {
+      padding: 10px;
+      background-color: #ff4747;
+      color: rgb(255, 255, 255);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    /* Button hover effects */
+    .button:hover {
+      background-color: #ff0000;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.7), 0 0 25px rgba(255, 0, 0, 0.7);
+    }
+
+    /* Textbox and input styling */
+    .file-input,
+    #customComment {
+      white-space: pre-wrap;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.3);
+    }
+   
+    /* Checkbox styling */
+    label {
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    /* Output container */
+    #output {
+      white-space: pre-wrap;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 10px;
+      box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.3);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Upload and Obfuscate JSON Files</h2>
+
+    <!-- File input for multiple JSON files -->
+    <input type="file" id="jsonFiles" class="file-input" accept=".json" multiple>
+    <br>
+
+    <!-- Custom comment section -->
+    <div class="comment-section">
+      <label for="customComment">Custom Comment:</label><br>
+      <input type="text" id="customComment" placeholder="Enter custom comment"><br>
+      <label>
+        <input type="checkbox" id="useCustomComment"> Use Custom Comment
+      </label>
+    </div>
+
+    <!-- Obfuscate button -->
+    <button onclick="obfuscateFiles()" class="button">Obfuscate and Download</button>
+
+    <!-- Output area -->
+    <h3>Obfuscated Output</h3>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    function obfuscateFiles() {
+      const files = document.getElementById("jsonFiles").files;
+      const outputDiv = document.getElementById("output");
+      outputDiv.innerHTML = ""; // Clear output area
+
+      Array.from(files).forEach(async file => {
+        const jsonText = await file.text();
+        let jsonData;
+
+        // Parse JSON data safely
+        try {
+          jsonData = JSON.parse(jsonText);
+        } catch (e) {
+          outputDiv.innerHTML += `<p>Error parsing ${file.name}: Invalid JSON</p>`;
+          return;
+        }
+
+        // Convert JSON data to obfuscated string
+        const obfuscatedJson = obfuscateJson(jsonData);
+
+        // Display in output area and create downloadable file
+        outputDiv.innerHTML += `<p><strong>${file.name}</strong></p><pre>${obfuscatedJson}</pre>`;
+        downloadFile(obfuscatedJson, "obfuscated_" + file.name);
+      });
+    }
+
+    // Recursive function to obfuscate JSON keys and values
+    function obfuscateJson(data) {
+      if (typeof data === "object" && !Array.isArray(data)) {
+        // Obfuscate each key and value in objects
+        return `{${Object.entries(data).map(([key, value]) => {
+          const obfuscatedKey = `"${unicodeEscape(key)}"`; // Ensure key is in quotes
+          const obfuscatedValue = obfuscateJson(value);
+          return `${obfuscatedKey}:${obfuscatedValue}/*${getComment()}*/`;
+        }).join(",")}}`;
+      } else if (Array.isArray(data)) {
+        // Obfuscate each element in arrays
+        return `[${data.map(item => obfuscateJson(item)).join(",")}]`;
+      } else if (typeof data === "string") {
+        // Escape each character in strings and ensure they are in quotes
+        return `"${unicodeEscape(data)}"`;
+      } else {
+        return JSON.stringify(data); // Handle numbers and booleans directly
+      }
+    }
+
+    // Function to convert a string to Unicode escapes
+    function unicodeEscape(str) {
+      return str.split("").map(char => {
+        return "\\u" + ("000" + char.charCodeAt(0).toString(16)).slice(-4);
+      }).join("");
+    }
+
+    // Function to retrieve either the custom comment or random Unicode comment
+    function getComment() {
+      const useCustom = document.getElementById("useCustomComment").checked;
+      const customText = document.getElementById("customComment").value;
+      if (useCustom && customText) {
+        return unicodeEscape(customText); // Convert custom comment to Unicode escape
+      } else {
+        return randomUnicodeComment(); // Default to random Unicode comment
+      }
+    }
+
+    // Function to generate a random Unicode comment
+    function randomUnicodeComment() {
+      let comment = "";
+      for (let i = 0; i < 10; i++) { // Generate 10 random characters
+        comment += "\\u" + ("000" + Math.floor(Math.random() * 65536).toString(16)).slice(-4);
+      }
+      return comment;
+    }
+
+    // Download the obfuscated JSON file
+    function downloadFile(content, fileName) {
+      const blob = new Blob([content], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+
+</html>
