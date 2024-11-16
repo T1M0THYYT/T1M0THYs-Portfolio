@@ -2,200 +2,89 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advanced JSON Obfuscator</title>
-  <style>
-    /* Background styling */
-    body {
-      font-family: Arial, sans-serif;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-      background: linear-gradient(135deg, rgb(255, 0, 0), rgba(93, 1, 1, 0.471)),
-        url('https://via.placeholder.com/1920x1080') no-repeat center center fixed;
-      background-size: cover;
-      backdrop-filter: blur(10px);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
-    /* Container styling */
-    .container {
-      padding: 30px;
-      width: 100%;
-      max-width: 600px;
-      background: rgba(0, 0, 0, 0.7);
-      /* Darken the container slightly */
-      border-radius: 15px;
-      box-shadow: 0px 4px 10px rgba(3, 1, 1, 0.5);
-      backdrop-filter: blur(5px);
-      /* Softens the box background */
-    }
-
-    /* Button styling */
-    .button {
-      padding: 10px;
-      background-color: #ff4747;
-      color: rgb(255, 255, 255);
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.5);
-      transition: all 0.3s ease;
-    }
-
-    /* Button hover effects */
-    .button:hover {
-      background-color: #ff0000;
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.7), 0 0 25px rgba(255, 0, 0, 0.7);
-    }
-
-    /* Textbox and input styling */
-    .file-input,
-    #customComment {
-      white-space: pre-wrap;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 8px;
-      border: none;
-      border-radius: 5px;
-      margin-top: 10px;
-      box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.3);
-    }
-   
-    /* Checkbox styling */
-    label {
-      font-size: 1em;
-      cursor: pointer;
-    }
-
-    /* Output container */
-    #output {
-      white-space: pre-wrap;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 15px;
-      border-radius: 5px;
-      margin-top: 10px;
-      box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.3);
-    }
-  </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
+<nav class="navbar">
+    <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
 <body>
-  <div class="container">
-    <h2>Upload and Obfuscate JSON Files</h2>
+    <header class="hero">
+        <h1>T1M0THY`s Portfolio</h1>
+        <p>Hello! I am T1M0THY, a 16-year-old programmer who makes Minecraft packs and is chronically online.</p>
+        <a href="#portfolio" class="btn">View My Work</a>
+    </header>
 
-    <!-- File input for multiple JSON files -->
-    <input type="file" id="jsonFiles" class="file-input" accept=".json" multiple>
-    <br>
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>
+            I am a self-taught developer skilled in HTML, JavaScript, and Minecraft development.
+        </p>
+    </section>
 
-    <!-- Custom comment section -->
-    <div class="comment-section">
-      <label for="customComment">Custom Comment:</label><br>
-      <input type="text" id="customComment" placeholder="Enter custom comment"><br>
-      <label>
-        <input type="checkbox" id="useCustomComment"> Use Custom Comment
-      </label>
-    </div>
+    <section id="portfolio" class="portfolio">
+        <h2>My Works</h2>
+        <div class="portfolio-grid">
+            <div class="project">
+                <img src="https://via.placeholder.com/300" alt="Ui Utils">
+                <h3>Ui Utils</h3>
+                <p>A powerful UI resource pack for Minecraft Bedrock.</p>
+            </div>
+            <div class="project">
+                <img src="https://via.placeholder.com/300" alt="3D Minimap">
+                <h3>3D Minimap</h3>
+                <p>A minimap resource pack for Minecraft Bedrock.</p>
+            </div>
+        </div>
+    </section>
 
-    <!-- Obfuscate button -->
-    <button onclick="obfuscateFiles()" class="button">Obfuscate and Download</button>
+    <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <div class="skill">
+            <p>Minecraft Json UI</p>
+            <div class="progress-bar">
+                <div class="progress" style="width: 90%;"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <p>CSS & HTML</p>
+            <div class="progress-bar">
+                <div class="progress" style="width: 65%;"></div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Output area -->
-    <h3>Obfuscated Output</h3>
-    <div id="output"></div>
-  </div>
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <p>Feel free to reach out for collaborations or just a friendly hello!</p>
+        <a href="mailto:your-email@example.com" class="btn">Email Me</a>
+    </section>
 
-  <script>
-    function obfuscateFiles() {
-      const files = document.getElementById("jsonFiles").files;
-      const outputDiv = document.getElementById("output");
-      outputDiv.innerHTML = ""; // Clear output area
-
-      Array.from(files).forEach(async file => {
-        const jsonText = await file.text();
-        let jsonData;
-
-        // Parse JSON data safely
-        try {
-          jsonData = JSON.parse(jsonText);
-        } catch (e) {
-          outputDiv.innerHTML += `<p>Error parsing ${file.name}: Invalid JSON</p>`;
-          return;
-        }
-
-        // Convert JSON data to obfuscated string
-        const obfuscatedJson = obfuscateJson(jsonData);
-
-        // Display in output area and create downloadable file
-        outputDiv.innerHTML += `<p><strong>${file.name}</strong></p><pre>${obfuscatedJson}</pre>`;
-        downloadFile(obfuscatedJson, "obfuscated_" + file.name);
-      });
-    }
-
-    // Recursive function to obfuscate JSON keys and values
-    function obfuscateJson(data) {
-      if (typeof data === "object" && !Array.isArray(data)) {
-        // Obfuscate each key and value in objects
-        return `{${Object.entries(data).map(([key, value]) => {
-          const obfuscatedKey = `"${unicodeEscape(key)}"`; // Ensure key is in quotes
-          const obfuscatedValue = obfuscateJson(value);
-          return `${obfuscatedKey}:${obfuscatedValue}/*${getComment()}*/`;
-        }).join(",")}}`;
-      } else if (Array.isArray(data)) {
-        // Obfuscate each element in arrays
-        return `[${data.map(item => obfuscateJson(item)).join(",")}]`;
-      } else if (typeof data === "string") {
-        // Escape each character in strings and ensure they are in quotes
-        return `"${unicodeEscape(data)}"`;
-      } else {
-        return JSON.stringify(data); // Handle numbers and booleans directly
-      }
-    }
-
-    // Function to convert a string to Unicode escapes
-    function unicodeEscape(str) {
-      return str.split("").map(char => {
-        return "\\u" + ("000" + char.charCodeAt(0).toString(16)).slice(-4);
-      }).join("");
-    }
-
-    // Function to retrieve either the custom comment or random Unicode comment
-    function getComment() {
-      const useCustom = document.getElementById("useCustomComment").checked;
-      const customText = document.getElementById("customComment").value;
-      if (useCustom && customText) {
-        return unicodeEscape(customText); // Convert custom comment to Unicode escape
-      } else {
-        return randomUnicodeComment(); // Default to random Unicode comment
-      }
-    }
-
-    // Function to generate a random Unicode comment
-    function randomUnicodeComment() {
-      let comment = "";
-      for (let i = 0; i < 10; i++) { // Generate 10 random characters
-        comment += "\\u" + ("000" + Math.floor(Math.random() * 65536).toString(16)).slice(-4);
-      }
-      return comment;
-    }
-
-    // Download the obfuscated JSON file
-    function downloadFile(content, fileName) {
-      const blob = new Blob([content], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = fileName;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(url);
-    }
-  </script>
+    <footer class="footer">
+        <p>Connect with me:</p>
+        <div class="social-icons">
+            <a hhref="https://github.com/T1M0THYYT"><img src="https://img.icons8.com/ios-glyphs/50/ffffff/github.png"
+                    alt="GitHub"></a>
+            <a href="https://www.youtube.com/@T1M0THYYT"><img
+                    src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube"></a>
+            <a href="https://discord.com/invite/h5cFbemeeY"><img
+                    src="https://img.icons8.com/ios-glyphs/50/ffffff/discord-logo.png" alt="Discord"></a>
+        </div>
+        <p>&copy; 2024 T1M0THY. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
