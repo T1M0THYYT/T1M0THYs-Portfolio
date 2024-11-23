@@ -50,11 +50,23 @@ a {
     color: #fff;
 }
 
+dl {
+    color: #fff;
+    opacity: 0;
+    transition: opacity(1s);
+    /* visibility: hidden; */
+}
+
+/* dl:hover {
+    opacity: 1;
+} */
+
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background: #005090;
+    background: #003a9075;
     color: #fff;
+    backdrop-filter: blur(6px);
     border-radius: 25px;
     transition: background 0.3s;
 }
@@ -85,13 +97,14 @@ a {
 /* About Section */
 .about {
     padding: 4em 2em;
-    background: #012a53;
+    background: #012a5398;
+    backdrop-filter: blur(10px)
 }
 
 /* Portfolio Section */
 .portfolio {
     padding: 4em 2em;
-    background: #005090;
+    backdrop-filter: blur(10px)
 }
 
 .portfolio-grid {
@@ -121,7 +134,8 @@ a {
 /* Contact Section */
 .contact {
     padding: 4em 2em;
-    background: #012a53;
+    background: #012a5394;
+    backdrop-filter: blur(10px)
 }
 
 .contact .btn {
@@ -149,21 +163,29 @@ a {
 }
 
 .social-icons a:hover img {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 /* Animations */
 @keyframes gradientShift {
     0% {
-        background-position: 0% 50%;
+        background-position: 0% 25%;
     }
 
-    50% {
+    25% {
         background-position: 100% 50%;
     }
 
+    50% {
+        background-position: 0% 75%;
+    }
+
+    75% {
+        background-position: 100% 100%;
+    }
+
     100% {
-        background-position: 0% 50%;
+        background-position: 0% 0%;
     }
 }
 
@@ -221,29 +243,4 @@ body {
 .project:hover img {
     transform: scale(1.1);
     opacity: 0.8;
-}
-
-.skills {
-    padding: 4em 2em;
-    background: #012a53;
-}
-
-.skill {
-    margin: 1em 0;
-    text-align: left;
-}
-
-.progress-bar {
-    background: #011527;
-    border-radius: 20px;
-    overflow: hidden;
-    height: 10px;
-    margin-top: 5px;
-}
-
-.progress {
-    background: #0077cc;
-    height: 100%;
-    border-radius: 20px;
-    transition: width 1s;
 }
