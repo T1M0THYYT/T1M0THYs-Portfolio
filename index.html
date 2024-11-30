@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
 </head>
@@ -23,7 +21,8 @@
 <body>
     <header id="hero" class="hero">
         <h1>T1M0THY`s Portfolio</h1>
-        <p>Hello! I am Timothy, a 16-year-old programmer who makes Minecraft resource packs, primarly consists of json ui and also
+        <p>Hello! I am Timothy, a 16-year-old programmer who makes Minecraft resource packs, primarly consists of json
+            ui and also
             drinks alot of coffee.</p>
         <a href="#portfolio" class="btn">View My Work</a>
     </header>
@@ -39,43 +38,30 @@
         <h2>My Works</h2>
         <div class="portfolio-grid">
             <div class="project">
-                <img src="./project_assets/uiutils.png" alt="Ui Utils">
-                <h3>Ui Utils</h3>
-                <p>A powerful UI resource pack for Minecraft Bedrock.</p>
-                
+                <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/ui-utils" target="_blank"
+                    rel="noopener noreferrer">
+                    <img src="./project_assets/uiutils.png" loading="lazy" alt="Ui Utils">
+                    <h3>Ui Utils</h3>
+                    <p>A powerful UI resource pack for Minecraft Bedrock.</p>
+                </a>
             </div>
             <div class="project">
-                <img src="./project_assets/minimap.png" alt="3D Minimap">
-                <h3>3D Minimap</h3>
-                <p>A minimap resource pack for Minecraft Bedrock.</p>
+                <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/minimap-resource-pack"
+                    target="_blank" rel="noopener noreferrer">
+                    <img src="./project_assets/minimap.png" loading="lazy" alt="3D Minimap">
+                    <h3>3D Minimap</h3>
+                    <p>A minimap resource pack for Minecraft Bedrock.</p>
+                </a>
             </div>
-            
+
             <div class="project">
-                <img src="./project_assets/default.png" alt="Placeholder">
-                <h3>Placeholder</h3>
-                <p>A Placeholder description for whatever this grid item should be.</p>
+                <a href="https://www.curseforge.com/minecraft-bedrock/texture-packs/" target="_blank"
+                    rel="noopener noreferrer">
+                    <img src="./project_assets/default.png" loading="lazy" alt="Placeholder">
+                    <h3>Placeholder</h3>
+                    <p>A Placeholder description for whatever this grid item should be.</p>
+                </a>
             </div>
-            <div class="project">
-                <img src="./project_assets/default.png" alt="Placeholder">
-                <h3>Placeholder</h3>
-                <p>A Placeholder description for whatever this grid item should be.</p>
-            </div>
-            <div class="project">
-                <img src="./project_assets/default.png" alt="Placeholder">
-                <h3>Placeholder</h3>
-                <p>A Placeholder description for whatever this grid item should be.</p>
-            </div>
-            <div class="project">
-                <img src="./project_assets/default.png" alt="Placeholder">
-                <h3>Placeholder</h3>
-                <p>A Placeholder description for whatever this grid item should be.</p>
-            </div>
-            <div class="project">
-                <img src="./project_assets/default.png" alt="Placeholder">
-                <h3>Placeholder</h3>
-                <p>A Placeholder description for whatever this grid item should be.</p>
-            </div>
-            
         </div>
     </section>
 
@@ -87,16 +73,31 @@
 
     <footer class="footer">
         <p>Other sites:</p>
-        <div class="social-icons">
-            <a hhref="https://github.com/T1M0THYYT"><img 
-                    src="https://img.icons8.com/ios-glyphs/50/ffffff/github.png" alt="GitHub"></a>
-            <a href="https://www.youtube.com/@T1M0THYYT"><img
-                    src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube"></a>
-            <a href="https://discord.com/invite/h5cFbemeeY"><img
-                    src="https://img.icons8.com/ios-glyphs/50/ffffff/discord-logo.png" alt="Discord"></a>
+        <div class="socials">
+            <div class="socials-item">
+                <a href="https://www.youtube.com/@T1M0THYYT">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube">
+                </a>
+            </div>
+            <div class="socials-item">
+                <a href="https://github.com/T1M0THYYT">
+                    <img src="https://img.icons8.com/ios-glyphs/50/ffffff/github.png" alt="GitHub">
+                </a>
+            </div>
+            <div class="socials-item">
+                <a href="https://twitter.com/T1M0THYYT">
+                    <img src="https://img.icons8.com/ios-glyphs/50/ffffff/twitter.png" alt="Twitter">
+                </a>
+            </div>
+            <div class="socials-item">
+                <a href="https://discord.com/invite/h5cFbemeeY">
+                    <img src="https://img.icons8.com/ios-glyphs/50/ffffff/discord-logo.png" alt="Discord">
+                </a>
+            </div>
         </div>
         <p>&copy; 2024 T1M0THY. All rights reserved.</p>
     </footer>
+    <script src="./scripts.js"></script>
 </body>
 
 </html>
